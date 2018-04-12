@@ -17,7 +17,7 @@ void GPIO_setOutput(GPIO_TypeDef GPIOX, uint8_t pins)
 	// GPIOX must be the name of the GPIO port that you want to use (i.e. GPIOX as defined in the header file)
 	// pins is a byte containing a '1' in the position of any pins that you want to set as outputs. Any bits with a zero will have no effect on the direction of those pins
 	// - I suggest ORing any pin values together to create multi-pin sets that are easily read
-	if((GPIOX >= GPIOA) && (GPIOX <= GPIOD)){
+	if((GPIOX >= GPIO_A) && (GPIOX <= GPIO_D)){
 		*(&DDRA + 3*GPIOX) |= pins;					// Offset the address by 3 times the GPIO number, then OR equals with pins to set new pins to output while leaving old pins intact
 	}
 }
@@ -28,7 +28,7 @@ void GPIO_setInput(GPIO_TypeDef GPIOX, uint8_t pins)
 	// GPIOX must be the name of the GPIO port that you want to use (i.e. GPIOX as defined in the header file)
 	// pins is a byte containing a '1' in the position of any pins that you want to set as inputs. Any bits with a zero will have no effect on the direction of those pins
 	// - I suggest ORing any pin values together to create multi-pin sets that are easily read
-	if((GPIOX >= GPIOA) && (GPIOX <= GPIOD)){
+	if((GPIOX >= GPIO_A) && (GPIOX <= GPIO_D)){
 		*(&DDRA + 3*GPIOX) &= (~pins);					// Offset the address by 3 times the GPIO number, then AND equals with NOT pins to set new pins to input while leaving old pins intact
 	}
 }
